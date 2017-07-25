@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <table>
+        <tr>
+            <td>章节名</td>
+        </tr>
+        <tr>
+            <td>---------------------最新章节----------------</td>
+        </tr>
+        {% for  chapter in chapter_info.newestlist %}
+        <tr>
+            <td><a href="{% url 'chapter' chapter_info.site chapter.book_id chapter.chapter_id %}">{{ chapter.chapter_name }}</a></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>----------------------完整章节------------------------------</td>
+        </tr>
+        {% for  chapter in chapter_info.chapterlist %}
+        <tr>
+            <td><a href="{% url 'chapter' chapter_info.site chapter.book_id chapter.chapter_id %}">{{ chapter.chapter_name }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

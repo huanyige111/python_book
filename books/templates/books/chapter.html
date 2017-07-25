@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <h1>{{ chapter.title }}</h1>
+    <div class='content'>
+        {% autoescape off %}
+            {{ chapter.content }}
+        {% endautoescape %}
+    </div>
+    <div>
+        <a href="{% url 'chapter' chapter.repo_name chapter.book_id chapter.pre_id %}">上一章</a>
+        <a>目录</a>
+        <a href="{% url 'chapter' chapter.repo_name chapter.book_id chapter.next_id %}">下一章</a>
+    </div>
+</body>
+</html>

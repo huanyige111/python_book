@@ -1,0 +1,19 @@
+{% extends "./common.html" %}
+
+{% block body %}
+    <table>
+        <tr>
+            <td>书名</td>
+            <td>最近阅读章节</td>
+            <td>操作</td>
+        </tr>
+        {% for  order in order_info %}
+        <tr>
+            <td><a href="{% url 'catalog' order.repo_name order.book_id 'asc' %}">{{ order.title }}</a></td>
+            <td></td>
+            <td><a href="{% url 'order_del' order.repo_name order.book_id %}">删除</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

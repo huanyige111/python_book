@@ -1,0 +1,27 @@
+{% extends "./common.html" %}
+
+{% block body %}
+    <table>
+        <tr>
+            <td>书名</td>
+            <td>最新章节名</td>
+            <td>订阅</td>
+        </tr>
+        {% for booklist in  bookinfo %}
+        <tr>
+            <td colspan="3">----------------------{{ booklist.repo_name }}--start------------------------------</td>
+        </tr>
+        {% for  book in booklist.listbook %}
+        <tr>
+            <td><a href="{% url 'catalog' booklist.site book.book_id 'asc' %}" data-source_url="{{ book.book_url }}">{{ book.book_name }}</a></td>
+            <td><a href="{{ book.chapter_url }}" data-source_url="{{ book.chapter_url }}">{{ book.chapter_name }}</a></td>
+            <td><a href="{% url 'order' booklist.site book.book_id %}">订阅</a></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="3">----------------------{{ booklist.repo_name }}--end-----------------------------</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
